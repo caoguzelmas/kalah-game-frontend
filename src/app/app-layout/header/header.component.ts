@@ -15,10 +15,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.items = [
-      {label: 'Create New Game', icon: 'pi pi-fw pi-home'},
-      {label: 'Active Game', icon: 'pi pi-fw pi-calendar'},
-      {label: 'All Games', icon: 'pi pi-fw pi-pencil'},
-      {label: 'How To Play', icon: 'pi pi-fw pi-file'},
+      {label: 'Create New Game', icon: 'pi pi-fw pi-home', routerLink: 'create'},
+      {label: 'Active Game', icon: 'pi pi-fw pi-desktop', routerLink: 'play'},
+      {label: 'All Games', icon: 'pi pi-fw pi-list', routerLink: 'search'},
+      {label: 'How To Play', icon: 'pi pi-fw pi-file', routerLink: 'how-to-play'},
     ];
 
     this.activeItem = this.items[0];

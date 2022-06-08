@@ -1,0 +1,44 @@
+<p-panel header="All Games">
+  <div class="ui-grid ui-grid-responsive ui-grid-pad" style="margin: 10px 0px">
+    <p-table [value]="games">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Game Id</th>
+          <th>Player 1's Score</th>
+          <th>Player 2's Score</th>
+          <th>Winner</th>
+          <th>Enabled Variations</th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-game>
+        <tr>
+          <td>{{game.gameId}}</td>
+          <td>{{game.firstPlayer.numberOfStonesOnPlayerStone}}</td>
+          <td>{{game.secondPlayer.numberOfStonesOnPlayerStone}}</td>
+          <td *ngIf="game.winnerPlayerId == null"> - </td>
+          <td *ngIf="game.winnerPlayerId != null">The winner is Player {{game.winnerPlayerId}}</td>
+          <td>
+            <table>
+              <tr *ngIf="game.gameVariation.firstMoveOnFirstPlayer">
+                <td>* First Move on Player1</td>
+              </tr>
+              <tr *ngIf="game.gameVariation.flowsCounterClockwise">
+                <td>* Game Flows Counterclockwise</td>
+              </tr>
+              <tr *ngIf="game.gameVariation.emptyCaptureEnabled">
+                <td>* Empty Capture Rule</td>
+              </tr>
+              <tr *ngIf="game.gameVariation.remainingStonesInsertionEnabled">
+                <td>* Remaining Stones Insertion</td>
+              </tr>
+            </table>
+          </td>
+          <td>
+            <button *ngIf="game.winnerPlayerId == null" label="Continue to Play" pButton type="button" class="ui-button-success" icon="pi pi-play"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</p-panel>
