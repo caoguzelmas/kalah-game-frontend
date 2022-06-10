@@ -1,0 +1,35 @@
+.mid {
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
+}
+
+.house-button{
+  height: 50px;
+  width: 75px;
+  margin: 2px;
+}
+
+.player2-house-button{
+  background-color: blue;
+}
+
+.player1-house-button{
+  background-color: red;
+}
+
+.store-button{
+  height: 150px;
+  width: 75px;
+  margin: 5px;
+}
+
+.left-store-button{
+  background-color: blue;
+  margin-right: 200px;
+}
+
+.right-store-button{
+  background-color: red;
+  margin-left: 200px;
+}

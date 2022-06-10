@@ -35,7 +35,7 @@
             </table>
           </td>
           <td>
-            <button *ngIf="game.winnerPlayerId == null" label="Continue to Play" pButton type="button" class="ui-button-success" icon="pi pi-play"></button>
+            <button *ngIf="game.winnerPlayerId == null" label="Continue to Play" pButton class="ui-button-success" icon="pi pi-play" (click)="continueToPlay(game)"></button>
           </td>
         </tr>
       </ng-template>

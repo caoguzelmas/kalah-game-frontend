@@ -3,6 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {GameRequest} from '../../model/GameRequest';
 import {Observable} from 'rxjs';
+import {Game} from '../../model/Game';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,19 @@ export class GameService {
   }
 
   createGame(gameRequest: GameRequest): Observable<any> {
-    console.table(gameRequest);
     return this.httpClient.post<any>(this.baseUrl + '/game/createGame', gameRequest);
   }
 
   getAllGames() {
     return this.httpClient.get(this.baseUrl + '/game/getAllGames');
+  }
+
+  getGame(gameId: number) {
+    return this.httpClient.get(this.baseUrl + '/game/getGame?gameId=' + gameId);
+  }
+
+  move(gameId: number, selectedHouseIndex: number) {
+    return this.httpClient.put(this.baseUrl + '/game/move?gameId=' + gameId + '&selectedHouseIndex=' + selectedHouseIndex, {});
   }
 
 }

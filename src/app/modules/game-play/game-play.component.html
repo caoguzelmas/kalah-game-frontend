@@ -1,5 +1,22 @@
 <p-panel header="Play Kalah Game">
   <div class="ui-grid-row">
-
+    <div class="ui-grid-row mid">
+      <button *ngFor="let house of secondPlayerHouses" pButton type="button" [disabled]="!activeGame.secondPlayer.activePlayer"
+              label="{{house.numberOfStones}}" class="ui-button-rounded house-button player2-house-button"
+              (click)="moveRequest(house.houseId)">
+      </button>
+    </div>
+    <div class="ui-grid-row mid" *ngIf="activeGame != undefined">
+      <button pButton type="button" label="{{secondPlayerStore.numberOfStones}}"
+              class="ui-button-rounded store-button left-store-button" [disabled]="true"></button>
+      <button pButton type="button" label="{{firstPlayerStore.numberOfStones}}"
+              class="ui-button-rounded store-button right-store-button" [disabled]="true"></button>
+    </div>
+    <div class="ui-grid-row mid">
+      <button *ngFor="let house of firstPlayerHouses" pButton type="button" [disabled]="!activeGame.firstPlayer.activePlayer"
+              label="{{house.numberOfStones}}" class="ui-button-rounded house-button player1-house-button"
+              (click)="moveRequest(house.houseId)">
+      </button>
+    </div>
   </div>
 </p-panel>

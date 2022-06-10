@@ -12,11 +12,15 @@ export class GameRequest implements GameVariation{
   constructor() {
     this.numberOfHouses = 6;
     this.numberOfStones = 4;
+    this.setDefaultGameVariations();
+
+  }
+
+  setDefaultGameVariations(): void {
     this.flowsCounterClockwise = true;
     this.firstMoveOnFirstPlayer = true;
     this.emptyCaptureEnabled = false;
     this.remainingStonesInsertionEnabled = true;
   }
-
 
 }
