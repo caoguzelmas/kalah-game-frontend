@@ -6,6 +6,7 @@
           <th>Game Id</th>
           <th>Player 1's Score</th>
           <th>Player 2's Score</th>
+          <th>Board Size</th>
           <th>Winner</th>
           <th>Enabled Variations</th>
           <th></th>
@@ -16,6 +17,16 @@
           <td>{{game.gameId}}</td>
           <td>{{game.firstPlayer.numberOfStonesOnPlayerStone}}</td>
           <td>{{game.secondPlayer.numberOfStonesOnPlayerStone}}</td>
+          <td>
+            <table>
+              <tr>
+                <td> Number of Houses of Each Player : {{game.numberOfHousesOfEachPlayer}}</td>
+              </tr>
+              <tr>
+                <td> Number of Stones on Each House : {{game.numberOfStonesOnEachHouse}}</td>
+              </tr>
+            </table>
+          </td>
           <td *ngIf="game.winnerPlayerId == null"> - </td>
           <td *ngIf="game.winnerPlayerId != null">The winner is Player {{game.winnerPlayerId}}</td>
           <td>
@@ -25,6 +36,9 @@
               </tr>
               <tr *ngIf="game.gameVariation.flowsCounterClockwise">
                 <td>* Game Flows Counterclockwise</td>
+              </tr>
+              <tr *ngIf="!game.gameVariation.flowsCounterClockwise">
+                <td>* Game Flows Clockwise</td>
               </tr>
               <tr *ngIf="game.gameVariation.emptyCaptureEnabled">
                 <td>* Empty Capture Rule</td>

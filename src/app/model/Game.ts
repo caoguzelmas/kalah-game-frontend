@@ -11,5 +11,7 @@ export class Game {
   winnerPlayerId: number;
   gameVariation: GameVariation;
   message: string;
+  numberOfHousesOfEachPlayer: number;
+  numberOfStonesOnEachHouse: number;
 
 }

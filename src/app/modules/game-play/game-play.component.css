@@ -33,3 +33,15 @@
   background-color: red;
   margin-left: 200px;
 }
+
+.left-store-button2{
+  background-color: blue;
+}
+
+.right-store-button2{
+  background-color: red;
+}
+
+.mt-2{
+  margin-top: 20px;
+}

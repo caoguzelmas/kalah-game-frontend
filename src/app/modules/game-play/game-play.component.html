@@ -1,22 +1,68 @@
-<p-panel header="Play Kalah Game">
+<p-panel header="Play">
   <div class="ui-grid-row">
-    <div class="ui-grid-row mid">
-      <button *ngFor="let house of secondPlayerHouses" pButton type="button" [disabled]="!activeGame.secondPlayer.activePlayer"
-              label="{{house.numberOfStones}}" class="ui-button-rounded house-button player2-house-button"
-              (click)="moveRequest(house.houseId)">
-      </button>
+    <div class="ui-grid-col-3">
+      <div class="ui-grid-row" *ngIf="activeGame">
+        <strong>Active Variations</strong>
+        <div *ngIf="activeGame.gameVariation.remainingStonesInsertionEnabled">
+          * Remaining Stones Insertion
+        </div>
+        <div *ngIf="activeGame.gameVariation.emptyCaptureEnabled">
+          * Empty Capture Rule
+        </div>
+        <div *ngIf="activeGame.gameVariation.flowsCounterClockwise">
+          * Game Flows Counterclockwise
+        </div>
+        <div *ngIf="!activeGame.gameVariation.flowsCounterClockwise">
+          * Game Flows Clockwise
+        </div>
+      </div>
+      <div class="ui-grid-row mt-2" *ngIf="activeGame">
+        <strong>Current Active Player</strong>
+        <div *ngIf="activeGame.firstPlayer.activePlayer">
+             Player 1's Turn...
+        </div>
+        <div *ngIf="activeGame.secondPlayer.activePlayer">
+             Player 2's Turn...
+        </div>
+      </div>
     </div>
-    <div class="ui-grid-row mid" *ngIf="activeGame != undefined">
-      <button pButton type="button" label="{{secondPlayerStore.numberOfStones}}"
-              class="ui-button-rounded store-button left-store-button" [disabled]="true"></button>
-      <button pButton type="button" label="{{firstPlayerStore.numberOfStones}}"
-              class="ui-button-rounded store-button right-store-button" [disabled]="true"></button>
-    </div>
-    <div class="ui-grid-row mid">
-      <button *ngFor="let house of firstPlayerHouses" pButton type="button" [disabled]="!activeGame.firstPlayer.activePlayer"
-              label="{{house.numberOfStones}}" class="ui-button-rounded house-button player1-house-button"
-              (click)="moveRequest(house.houseId)">
-      </button>
+    <div class="ui-grid-col-6">
+      <div class="ui-grid-row" *ngIf="activeGame">
+        <div class="ui-grid-row mid">
+          <strong>
+            Player 2
+          </strong>
+        </div>
+        <div class="ui-grid-row mid">
+          <button pButton type="button" label="{{secondPlayerStore.numberOfStones}}"
+                  class="ui-button-rounded store-button left-store-button2" [disabled]="true"></button>
+          <button *ngFor="let house of secondPlayerHouses" pButton type="button" [disabled]="!activeGame.secondPlayer.activePlayer"
+                  label="{{house.numberOfStones}}" class="ui-button-rounded house-button player2-house-button"
+                  (click)="moveRequest(house.houseId)">
+          </button>
+        </div>
+        <!--<div class="ui-grid-row mid" *ngIf="activeGame">
+          <button pButton type="button" label="{{secondPlayerStore.numberOfStones}}"
+                  class="ui-button-rounded store-button left-store-button" [disabled]="true"></button>
+          <button pButton type="button" label="{{firstPlayerStore.numberOfStones}}"
+                  class="ui-button-rounded store-button right-store-button" [disabled]="true"></button>
+        </div>-->
+        <div class="ui-grid-row mid">
+          <button *ngFor="let house of firstPlayerHouses" pButton type="button" [disabled]="!activeGame.firstPlayer.activePlayer"
+                  label="{{house.numberOfStones}}" class="ui-button-rounded house-button player1-house-button"
+                  (click)="moveRequest(house.houseId)"></button>
+          <button pButton type="button" label="{{firstPlayerStore.numberOfStones}}"
+                  class="ui-button-rounded store-button right-store-button2" [disabled]="true"></button>
+        </div>
+        <div class="ui-grid-row mid">
+          <strong>
+            Player 1
+          </strong>
+        </div>
+      </div>
     </div>
   </div>
+
+
+
 </p-panel>

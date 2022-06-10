@@ -8,8 +8,7 @@ import {MessageService} from 'primeng/api';
 @Component({
   selector: 'app-game-play',
   templateUrl: './game-play.component.html',
-  styleUrls: ['./game-play.component.css'],
-  providers: [MessageService]
+  styleUrls: ['./game-play.component.css']
 })
 export class GamePlayComponent implements OnInit, OnDestroy {
   activeGame: Game;
@@ -18,7 +17,7 @@ export class GamePlayComponent implements OnInit, OnDestroy {
   secondPlayerHouses: House[];
   secondPlayerStore: House;
 
-  constructor(private gameService: GameService, private route: ActivatedRoute, private messageService: MessageService) {
+  constructor(private gameService: GameService, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
@@ -57,7 +56,7 @@ export class GamePlayComponent implements OnInit, OnDestroy {
   moveRequest(selectedIndex: number) {
     this.gameService.move(this.activeGame.gameId, selectedIndex).subscribe((response: Game) => {
       if (response.message !== '') {
-        this.messageService.add({key: 'tc', severity:'warn', summary: 'Info Message', detail:'PrimeNG rocks'});
+        console.log(response.message);
     } else {
         this.activeGame = response;
         this.ngOnInit();
