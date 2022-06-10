@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {Game} from '../../model/Game';
 import {GameService} from '../service/GameService';
 import {House} from '../../model/House';
-import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-game-play',
@@ -13,9 +12,10 @@ import {MessageService} from 'primeng/api';
 export class GamePlayComponent implements OnInit, OnDestroy {
   activeGame: Game;
   firstPlayerHouses: House[];
-  firstPlayerStore: House;
+  firstPlayerStore: House[];
   secondPlayerHouses: House[];
-  secondPlayerStore: House;
+  secondPlayerStore: House[];
+  stores: House[];
 
   constructor(private gameService: GameService, private route: ActivatedRoute) {
   }
@@ -43,14 +43,16 @@ export class GamePlayComponent implements OnInit, OnDestroy {
   }
 
   setPlayerStores() {
-    this.firstPlayerStore = this.activeGame.gameBoard.houses[(this.activeGame.gameBoard.houses.length - 2) / 2];
-    this.secondPlayerStore = this.activeGame.gameBoard.houses[this.activeGame.gameBoard.houses.length - 1];
+    this.firstPlayerStore = [];
+    this.secondPlayerStore = [];
+    this.firstPlayerStore.push(this.activeGame.gameBoard.houses[(this.activeGame.gameBoard.houses.length - 2) / 2]);
+    this.secondPlayerStore.push(this.activeGame.gameBoard.houses[this.activeGame.gameBoard.houses.length - 1]);
   }
 
   setPlayerHouses() {
-    this.firstPlayerHouses = this.activeGame.gameBoard.houses.slice(0, this.firstPlayerStore.houseId);
+    this.firstPlayerHouses = this.activeGame.gameBoard.houses.slice(0, this.firstPlayerStore[0].houseId);
     this.secondPlayerHouses = this.activeGame.gameBoard.houses
-      .slice(this.firstPlayerStore.houseId + 1, this.secondPlayerStore.houseId).reverse();
+      .slice(this.firstPlayerStore[0].houseId + 1, this.secondPlayerStore[0].houseId).reverse();
   }
 
   moveRequest(selectedIndex: number) {

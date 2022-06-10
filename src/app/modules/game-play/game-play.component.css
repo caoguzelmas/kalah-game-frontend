@@ -11,34 +11,27 @@
 }
 
 .player2-house-button{
+  margin-top: 5px;
   background-color: blue;
 }
 
 .player1-house-button{
   background-color: red;
+  margin-top: 25px;
+  margin-bottom: 5px;
 }
 
 .store-button{
   height: 150px;
   width: 75px;
-  margin: 5px;
+  margin: 10px;
 }
 
 .left-store-button{
   background-color: blue;
-  margin-right: 200px;
 }
 
 .right-store-button{
-  background-color: red;
-  margin-left: 200px;
-}
-
-.left-store-button2{
-  background-color: blue;
-}
-
-.right-store-button2{
   background-color: red;
 }
 
