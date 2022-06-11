@@ -20,9 +20,6 @@ export class HeaderComponent implements OnInit {
       {label: 'All Games', icon: 'pi pi-fw pi-list', routerLink: 'search'},
       {label: 'How To Play', icon: 'pi pi-fw pi-file', routerLink: 'how-to-play'},
     ];
-
-    this.activeItem = this.items[0];
-
   }
 
 }
