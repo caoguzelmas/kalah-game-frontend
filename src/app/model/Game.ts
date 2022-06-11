@@ -4,7 +4,7 @@ import {GameVariation} from './GameVariation';
 
 export class Game {
 
-  gameId: number;
+  gameId: string;
   firstPlayer: Player;
   secondPlayer: Player;
   gameBoard: GameBoard;

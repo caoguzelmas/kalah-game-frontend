@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Game} from '../../model/Game';
 import {GameService} from '../service/GameService';
 import {House} from '../../model/House';
@@ -15,9 +15,11 @@ export class GamePlayComponent implements OnInit, OnDestroy {
   firstPlayerStore: House[];
   secondPlayerHouses: House[];
   secondPlayerStore: House[];
-  stores: House[];
+  sideBarActive = false;
 
-  constructor(private gameService: GameService, private route: ActivatedRoute) {
+  constructor(private gameService: GameService,
+              private route: ActivatedRoute,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -25,14 +27,21 @@ export class GamePlayComponent implements OnInit, OnDestroy {
       const gameId = param.gameId !== undefined ?
         param.gameId : localStorage.getItem('gameId');
 
-      this.gameService.getGame(gameId).subscribe((response: Game) => {
-        this.activeGame = response;
-        this.setPlayerStores();
-        this.setPlayerHouses();
-        console.log(this.activeGame);
-        console.log(this.activeGame.firstPlayer.activePlayer);
-        console.log(this.activeGame.secondPlayer.activePlayer);
-      });
+      if (gameId) {
+        this.gameService.getGame(gameId).subscribe((response: Game) => {
+          this.activeGame = response;
+          this.setPlayerStores();
+          this.setPlayerHouses();
+
+          if (this.activeGame.winnerPlayerId !== null) {
+            this.sideBarActive = true;
+            this.activeGame.firstPlayer.numberOfStonesOnPlayerStone = this.activeGame
+              .gameBoard.houses[(this.activeGame.gameBoard.houses.length - 2) / 2].numberOfStones;
+            this.activeGame.secondPlayer.numberOfStonesOnPlayerStone = this.activeGame
+              .gameBoard.houses[this.activeGame.gameBoard.houses.length - 1].numberOfStones;
+          }
+        });
+      }
     });
   }
 
@@ -64,5 +73,9 @@ export class GamePlayComponent implements OnInit, OnDestroy {
         this.ngOnInit();
       }
     });
+  }
+
+  clickNewGame() {
+    this.router.navigate(['/create']);
   }
 }

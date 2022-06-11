@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import {TableModule} from 'primeng/table';
 import {CheckboxModule} from 'primeng/checkbox';
+import {SidebarModule} from 'primeng/sidebar';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {CheckboxModule} from 'primeng/checkbox';
     HttpClientModule,
     CommonModule,
     TableModule,
-    CheckboxModule
+    CheckboxModule,
+    SidebarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

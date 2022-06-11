@@ -1,3 +1,26 @@
+<p-sidebar visible="true" position="top" [(visible)]="sideBarActive" (click)="sideBarActive = false">
+  <div class="ui-grid-row mid mt-2">
+    <strong>
+      Content
+    </strong>
+  </div>
+  <div class="ui-grid-row" *ngIf="activeGame">
+    <div class="ui-grid-col-10">
+      <div class="ui-grid-row mid mt-2" *ngIf="activeGame.winnerPlayerId === 0">
+        The game ended in a draw {{activeGame.secondPlayer.numberOfStonesOnPlayerStone}} - {{activeGame.firstPlayer.numberOfStonesOnPlayerStone}} ! You can click "Start New Game" to create a new game.
+      </div>
+      <div class="ui-grid-row mid mt-2" *ngIf="activeGame.winnerPlayerId === 1">
+        Player 1 Wins by {{activeGame.firstPlayer.numberOfStonesOnPlayerStone}} - {{activeGame.secondPlayer.numberOfStonesOnPlayerStone}} ! You can click "Start New Game" to create a new game.
+      </div>
+      <div class="ui-grid-row mid mt-2" *ngIf="activeGame.winnerPlayerId === 2">
+        Player 2 Wins by {{activeGame.secondPlayer.numberOfStonesOnPlayerStone}} - {{activeGame.firstPlayer.numberOfStonesOnPlayerStone}} ! You can click "Start New Game" to create a new game.
+      </div>
+    </div>
+    <div class="ui-grid-col-2 mt-4">
+      <p-button label="Start New Game" class="ui-button-success" (click)="clickNewGame()"></p-button>
+    </div>
+  </div>
+</p-sidebar>
 <p-panel header="Play">
   <div class="ui-grid-row">
     <div class="ui-grid-col-3">
@@ -34,7 +57,12 @@
                     class="ui-button-rounded store-button left-store-button" [disabled]="true"></button>
           </div>
         </div>
-        <div class="ui-grid-col-10">
+        <div class="ui-grid-row mid" *ngIf="!activeGame">
+          <strong>
+            No Active Game yet
+          </strong>
+        </div>
+        <div class="ui-grid-col-10" *ngIf="activeGame">
           <div class="ui-grid-row mid">
             <strong>
               Player 2

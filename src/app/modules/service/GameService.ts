@@ -27,7 +27,7 @@ export class GameService {
     return this.httpClient.get(this.baseUrl + '/game/getGame?gameId=' + gameId);
   }
 
-  move(gameId: number, selectedHouseIndex: number) {
+  move(gameId: string, selectedHouseIndex: number) {
     return this.httpClient.put(this.baseUrl + '/game/move?gameId=' + gameId + '&selectedHouseIndex=' + selectedHouseIndex, {});
   }
 

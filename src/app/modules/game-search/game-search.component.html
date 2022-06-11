@@ -28,7 +28,9 @@
             </table>
           </td>
           <td *ngIf="game.winnerPlayerId == null"> - </td>
-          <td *ngIf="game.winnerPlayerId != null">The winner is Player {{game.winnerPlayerId}}</td>
+          <td *ngIf="game.winnerPlayerId == 0">The game ended in a draw</td>
+          <td *ngIf="game.winnerPlayerId == 1">The winner is Player 1</td>
+          <td *ngIf="game.winnerPlayerId == 2">The winner is Player 2</td>
           <td>
             <table>
               <tr *ngIf="game.gameVariation.firstMoveOnFirstPlayer">
