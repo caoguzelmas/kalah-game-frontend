@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Game} from '../../model/Game';
 import {GameService} from '../service/GameService';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-game-search',
@@ -29,7 +28,6 @@ export class GameSearchComponent implements OnInit {
 
   setGameInfos() {
     this.games.forEach(game => {
-      console.log(game.gameVariation.emptyCaptureEnabled);
       game.firstPlayer.numberOfStonesOnPlayerStone = game.gameBoard.houses[(game.gameBoard.houses.length - 2) / 2].numberOfStones;
       game.secondPlayer.numberOfStonesOnPlayerStone = game.gameBoard.houses[game.gameBoard.houses.length - 1].numberOfStones;
       game.numberOfHousesOfEachPlayer = (game.gameBoard.houses.length - 2) / 2;
