@@ -3,6 +3,7 @@ import {GameRequest} from '../../model/GameRequest';
 import {GameService} from '../service/GameService';
 import {Params, Router} from '@angular/router';
 import {Game} from '../../model/Game';
+import {GameResponse} from '../../model/GameResponse';
 
 @Component({
   selector: 'app-game-create',
@@ -20,8 +21,8 @@ export class GameCreateComponent implements OnInit {
   }
 
   createGame() {
-    this.gameService.createGame(this.gameRequestBody).subscribe((response: Game) => {
-      const queryParams: Params = { gameId: response.gameId };
+    this.gameService.createGame(this.gameRequestBody).subscribe((response: GameResponse) => {
+      const queryParams: Params = { gameId: response.game.gameId };
       this.router.navigate(['/play'], {queryParams});
     });
   }

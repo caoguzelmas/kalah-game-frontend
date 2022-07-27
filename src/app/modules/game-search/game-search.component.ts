@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Game} from '../../model/Game';
 import {GameService} from '../service/GameService';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import {GameResponse} from '../../model/GameResponse';
 
 @Component({
   selector: 'app-game-search',
@@ -20,8 +21,8 @@ export class GameSearchComponent implements OnInit {
   }
 
   paginate() {
-    return this.gameService.getAllGames().subscribe((response: Game[]) => {
-      this.games = response;
+    return this.gameService.getAllGames().subscribe((response: GameResponse) => {
+      this.games = response.gameList;
       this.setGameInfos();
     });
   }

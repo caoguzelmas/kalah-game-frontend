@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Game} from '../../model/Game';
 import {GameService} from '../service/GameService';
 import {House} from '../../model/House';
+import {GameResponse} from '../../model/GameResponse';
 
 @Component({
   selector: 'app-game-play',
@@ -28,8 +29,8 @@ export class GamePlayComponent implements OnInit, OnDestroy {
         param.gameId : localStorage.getItem('gameId');
 
       if (gameId) {
-        this.gameService.getGame(gameId).subscribe((response: Game) => {
-          this.activeGame = response;
+        this.gameService.getGame(gameId).subscribe((response: GameResponse) => {
+          this.activeGame = response.game;
           this.setPlayerStores();
           this.setPlayerHouses();
 
@@ -65,11 +66,12 @@ export class GamePlayComponent implements OnInit, OnDestroy {
   }
 
   moveRequest(selectedIndex: number) {
-    this.gameService.move(this.activeGame.gameId, selectedIndex).subscribe((response: Game) => {
-      if (response.message !== '') {
+    this.gameService.move(this.activeGame.gameId, selectedIndex).subscribe((response: GameResponse) => {
+
+      if (response.message !== 'Success') {
         console.log(response.message);
     } else {
-        this.activeGame = response;
+        this.activeGame = response.game;
         this.ngOnInit();
       }
     });
