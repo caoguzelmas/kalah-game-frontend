@@ -1,6 +1,25 @@
 # KalahGame
 
+The repository includes the frontend project of Kalah Game Implementation.Communicates with the backend project of Kalah Game Implementation, https://github.com/caoguzelmas/kalah-game-backend. 
+
+Also live on, https://kalah-game-frontend-coe.herokuapp.com/ 
+
+
+About the Kalah Game
+
+The game is developed based on https://en.wikipedia.org/wiki/Kalah and implements the standard gameplay and it’s variations.
+
+-Player can create a game that implements the combinations of these variations. 
+-Player can create multiple games one after another.
+-Player can stop the game and reach out the other pages.
+-Player can resume the unfinished game that listed on “All Games” section. 
+-All the game records are stored on MongoDb Atlas.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+
+![image](https://user-images.githubusercontent.com/41612346/183049273-e7949c79-133a-4240-9e3e-cae1ec80d594.png)
+
 
 ## Development server
 
