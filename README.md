@@ -9,11 +9,11 @@ About the Kalah Game
 
 The game is developed based on https://en.wikipedia.org/wiki/Kalah and implements the standard gameplay and it’s variations.
 
--Player can create a game that implements the combinations of these variations. 
--Player can create multiple games one after another.
--Player can stop the game and reach out the other pages.
--Player can resume the unfinished game that listed on “All Games” section. 
--All the game records are stored on MongoDb Atlas.
+- Player can create a game that implements the combinations of these variations. 
+- Player can create multiple games one after another.
+- Player can stop the game and reach out the other pages.
+- Player can resume the unfinished game that listed on “All Games” section. 
+- All the game records are stored on MongoDb Atlas.
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
