@@ -2,6 +2,8 @@
 
 The repository includes the frontend project of Kalah Game Implementation.Communicates with the backend project of Kalah Game Implementation, https://github.com/caoguzelmas/kalah-game-backend. 
 
+Available on, https://hub.docker.com/repository/docker/caoguzelmas/kalah-game-frontend
+
 Also live on, https://kalah-game-frontend-coe.herokuapp.com/ 
 
 
