@@ -1,7 +1,7 @@
 export class Player {
 
   playerId: number;
-  activePlayer: boolean;
+  isActivePlayer: boolean;
   playerStoreIndex: number;
   numberOfStonesOnPlayerStone: number;
 
